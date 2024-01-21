@@ -1,6 +1,6 @@
 import json
 import customtkinter as ctk
-import tkinter as tk; from tkinter import simpledialog
+import tkinter as tk; from tkinter import simpledialog , filedialog
 import os
 # import random
 import sys
@@ -239,8 +239,11 @@ class profile_p(ctk.CTkFrame):
                 json.dump(profile_data, json_file, indent=4)
 
         # اضافه کردن دکمه Change
-        self.change_btn = ctk.CTkButton(self.menu_detials_frame, text='Change', font=('Roboto', 17), command=self.change_profile)
+        self.change_btn = ctk.CTkButton(self.menu_detials_frame, text='Change Information', font=('Roboto', 17), command=self.change_profile)
         self.change_btn.place(x=600, y=400)
+
+        self.change_btn_profile = ctk.CTkButton(self.menu_detials_frame, text='Change Profile Image', font=('Roboto', 17), command=self.select_image)
+        self.change_btn_profile.place(x=400, y=400)
 
         # Profile Detail lb
         self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Username', font=('Times New Roman', 35))
@@ -265,6 +268,15 @@ class profile_p(ctk.CTkFrame):
         self.username_lb_d.configure(text=profile_data["username"])
         self.mail_lb_d.configure(text=profile_data["email"])
         self.regoin_lb_d.configure(text=profile_data["region"])
+
+    def select_image(self):
+        self.file_path = filedialog.askopenfilename(title="Select Image", filetypes=[("Image files", "*.png;*.jpg;*.jpeg;*.gif")])
+        self.image = Image.open(self.file_path)
+        self.image = self.image.resize((256, 256))
+        self.photo = ImageTk.PhotoImage(self.image)
+
+        if self.file_path:
+            self.label.configure(image=self.photo, text='')
     
     def change_profile(self):
         # نمایش صفحه popup برای گرفتن اطلاعات جدید
