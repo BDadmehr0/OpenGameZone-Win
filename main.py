@@ -1,7 +1,9 @@
+import json
 import customtkinter as ctk
-import tkinter as tk
+import tkinter as tk; from tkinter import simpledialog
 import os
-import random
+# import random
+import sys
 import logging
 
 from PIL import Image, ImageTk
@@ -162,6 +164,26 @@ class profile_p(ctk.CTkFrame):
         self.label = ctk.CTkLabel(self.menu_detials_frame, image=self.photo, text='')
         self.label.place(x=130, y=130)
 
+        # چک کنید آیا فایل JSON وجود دارد یا خیر
+        json_file_path = "./data/acc1.json"
+        try:
+            with open(json_file_path, "r") as json_file:
+                profile_data = json.load(json_file)
+        except FileNotFoundError:
+            profile_data = {
+                "username": "Unknown",
+                "email": "Unknown",
+                "region": "Unknown"
+            }
+
+            # اگر فایل وجود نداشته باشد، اطلاعات پروفایل را به فایل JSON اضافه کنید
+            with open(json_file_path, "w") as json_file:
+                json.dump(profile_data, json_file, indent=4)
+
+        # اضافه کردن دکمه Change
+        self.change_btn = ctk.CTkButton(self.menu_detials_frame, text='Change', font=('Roboto', 17), command=self.change_profile)
+        self.change_btn.place(x=600, y=400)
+
         # Profile Detail lb
         self.username_lb = ctk.CTkLabel(self.menu_detials_frame, text='Username', font=('Times New Roman', 35))
         self.username_lb.place(x=450, y=130)
@@ -180,6 +202,45 @@ class profile_p(ctk.CTkFrame):
 
         self.regoin_lb_d = ctk.CTkLabel(self.menu_detials_frame, text='Unknown', font=('Roboto', 17))
         self.regoin_lb_d.place(x=480, y=360)
+
+        # اطلاعات از فایل JSON خوانده شده را در label ها نشان دهید
+        self.username_lb_d.configure(text=profile_data["username"])
+        self.mail_lb_d.configure(text=profile_data["email"])
+        self.regoin_lb_d.configure(text=profile_data["region"])
+    
+    def change_profile(self):
+        # نمایش صفحه popup برای گرفتن اطلاعات جدید
+        new_username = simpledialog.askstring("Change Username", "Enter new username:")
+        new_region = simpledialog.askstring("Change Region", "Enter new region:")
+        new_email = simpledialog.askstring("Change Email", "Enter new email:")
+
+        if new_username is not None and new_region is not None and new_email is not None:
+            # تغییر اطلاعات در label ها
+            self.username_lb_d.config(text=new_username)
+            self.regoin_lb_d.config(text=new_region)
+            self.mail_lb_d.config(text=new_email)
+
+            # ذخیره اطلاعات جدید در فایل JSON
+            json_file_path = "./data/acc1.json"
+            try:
+                with open(json_file_path, "r") as json_file:
+                    profile_data = json.load(json_file)
+            except FileNotFoundError:
+                profile_data = {
+                    "username": "Unknown",
+                    "email": "Unknown",
+                    "region": "Unknown"
+                }
+
+            # تغییر اطلاعات
+            profile_data["username"] = new_username
+            profile_data["region"] = new_region
+            profile_data["email"] = new_email
+
+            # ذخیره اطلاعات در فایل JSON
+            with open(json_file_path, "w") as json_file:
+                json.dump(profile_data, json_file, indent=4)
+
         
 
     def exitf(self):
@@ -436,23 +497,19 @@ class Frame_ch(ctk.CTk):
         frame.tkraise()
 
 if __name__ == "__main__":
-    # # LOG
+    # log
     logging.basicConfig(filename='log.log', filemode='w', level=logging.INFO)
+    log_file_path = 'log.log'
+    log_file = open(log_file_path, 'w')
+    sys.stdout = log_file
+    sys.stderr = log_file
 
-    logger = logging.getLogger()
-    # logger.info('This is error')
-    logger.debug('This is Debug')
-    # logger.warning('This is error')
-    logger.error('This is Error')
-    logger.critical('This is Critical')
-
-
+    
     welcome_page = WelcomePage()
     welcome_page.mainloop()
-
-    # Login_Singin = Login_Singin()
-    # Login_Singin.mainloop()
     
     app = Frame_ch()
     os.system('clear')
     app.mainloop()
+
+    log_file.close()
