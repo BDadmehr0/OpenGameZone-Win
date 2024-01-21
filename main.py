@@ -509,7 +509,6 @@ if __name__ == "__main__":
     welcome_page.mainloop()
     
     app = Frame_ch()
-    os.system('clear')
     app.mainloop()
 
     log_file.close()
