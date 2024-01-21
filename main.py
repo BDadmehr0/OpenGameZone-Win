@@ -61,6 +61,9 @@ class about_p(ctk.CTkFrame):
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
+
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
 
@@ -119,6 +122,9 @@ class profile_p_friends(ctk.CTkFrame):
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
 
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
@@ -191,6 +197,9 @@ class profile_p(ctk.CTkFrame):
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
+
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
 
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
@@ -369,6 +378,9 @@ class library_p(ctk.CTkFrame):
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
+
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
 
@@ -428,6 +440,9 @@ class shop_p(ctk.CTkFrame):
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
+
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
 
@@ -486,8 +501,8 @@ class main_p(ctk.CTkFrame):
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.profile_p_btn.pack(side='left', fill='y', expand=False)
+        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
+        self.about_p_btn.pack(side='left', fill='y', expand=False)
 
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
