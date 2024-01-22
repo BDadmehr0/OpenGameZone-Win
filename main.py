@@ -115,7 +115,7 @@ class about_p(ctk.CTkFrame):
         self.lb12A = ctk.CTkLabel(self.scrollable_frame, text='This project is licensed under the MIT License - see the [LICENSE](/https://github.com/BDadmehr0/OpenGameZone-Win/blob/main/LICENSE) file for details.', font=('bold', Heding.p))
         self.lb12A.pack(padx=12, anchor='w')
 
-        self.lb13A = ctk.CTkLabel(self.scrollable_frame, text='Made by Dammehr Emami from Bahlouli School 2', font=('bold', Heding.p))
+        self.lb13A = ctk.CTkLabel(self.scrollable_frame, text='Made by Dadmehr Emami from Bahlouli School 2', font=('bold', Heding.p))
         self.lb13A.pack(padx=12, anchor='w')
         ## Menu Top Buttons
 
