@@ -8,6 +8,24 @@ import logging
 
 from PIL import Image, ImageTk
 
+# heding class
+class Heding:
+    h1 = 65
+    h2 = 35
+    h3 = 25
+    p = 15
+
+    li = '• '
+    one = '➊ '
+    two = '➋ '
+    three = '➌ '
+    four = '➍ '
+    five = '➎ '
+    six = '➏ '
+    seven = '➐ '
+    eight = '➑ '
+    nine = '➒ '
+
 # Polet Color
 
 class color:
@@ -25,12 +43,6 @@ class about_p(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
 
         # OBJ
 
@@ -47,16 +59,71 @@ class about_p(ctk.CTkFrame):
         self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
         self.logo.pack(side='left', fill='x', expand=False, padx=5)
 
-        # Menu Top Buttons
+
+        ## about main frame
+        
+        # scrollable_frame
+        self.scrollable_frame = ctk.CTkScrollableFrame(master=self, width=200, height=200, corner_radius=0, fg_color="transparent", label_anchor='w')
+        self.scrollable_frame.pack(padx=12, pady=10, expand=True, side='top', fill='both')
+
+        self.lb1A = ctk.CTkLabel(self.scrollable_frame, text='OpenGameZone', font=('bold', Heding.h1))
+        self.lb1A.pack(padx=12, pady=20, anchor='n')
+
+        self.image1 = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
+        self.image1 = self.image.resize((128, 128))
+        self.photo1 = ImageTk.PhotoImage(self.image1)
+        self.logo1 = ctk.CTkLabel(self.scrollable_frame, image=self.photo1, text='', corner_radius=0)
+        self.logo1.pack(padx=12, pady=20, anchor='n')
+
+        # labels README.md
+        self.lb1A = ctk.CTkLabel(self.scrollable_frame, text='This project is a Python application built using customtkinter and tkinter libraries, creating a graphical user interface for Linux.', font=('bold', Heding.p))
+        self.lb1A.pack(padx=12, anchor='w')
+
+        self.lb1_2A = ctk.CTkLabel(self.scrollable_frame, text='The main goal of this application is to establish a game shop, providing users with the ability to download, install, and play games.', font=('bold', Heding.p))
+        self.lb1_2A.pack(padx=12, anchor='w')
+
+        self.lb2A = ctk.CTkLabel(self.scrollable_frame, text='Key Highlights of the Project', font=('bold', Heding.h2))
+        self.lb2A.pack(padx=12, pady=20, anchor='w')
+
+        self.lb3A = ctk.CTkLabel(self.scrollable_frame, text=Heding.one+'Open Source', font=('bold', Heding.p))
+        self.lb3A.pack(padx=12, anchor='w')
+        
+        self.lb4A = ctk.CTkLabel(self.scrollable_frame, text=Heding.two+'Graphical Interface', font=('bold', Heding.p))
+        self.lb4A.pack(padx=12, anchor='w')
+
+        self.lb5A = ctk.CTkLabel(self.scrollable_frame, text=Heding.three+'Game Centralization', font=('bold', Heding.p))
+        self.lb5A.pack(padx=12, anchor='w')
+
+        self.lb6A = ctk.CTkLabel(self.scrollable_frame, text=Heding.four+'Community Support', font=('bold', Heding.p))
+        self.lb6A.pack(padx=12, anchor='w')
+
+        self.lb7A = ctk.CTkLabel(self.scrollable_frame, text='Installion & Run', font=('bold', Heding.h2))
+        self.lb7A.pack(padx=12,pady=20, anchor='w')
+
+        self.lb8A = ctk.CTkLabel(self.scrollable_frame, text=Heding.one+'[Clone this repository](from https://github.com/BDadmehr0/OpenGameZone-Win)', font=('bold', Heding.p))
+        self.lb8A.pack(padx=12, anchor='w')
+
+        self.lb9A = ctk.CTkLabel(self.scrollable_frame, text=Heding.two+'Install required dependencies using "pip install -r requirements.txt"', font=('bold', Heding.p))
+        self.lb9A.pack(padx=12, anchor='w')
+        
+        self.lb10A = ctk.CTkLabel(self.scrollable_frame, text=Heding.three+'Run the application with "python3 main.py"', font=('bold', Heding.p))
+        self.lb10A.pack(padx=12, anchor='w')
+
+        self.lb11A = ctk.CTkLabel(self.scrollable_frame, text='License', font=('bold', Heding.h2))
+        self.lb11A.pack(padx=12,pady=20, anchor='w')
+
+        self.lb12A = ctk.CTkLabel(self.scrollable_frame, text='This project is licensed under the MIT License - see the [LICENSE](/https://github.com/BDadmehr0/OpenGameZone-Win/blob/main/LICENSE) file for details.', font=('bold', Heding.p))
+        self.lb12A.pack(padx=12, anchor='w')
+
+        self.lb13A = ctk.CTkLabel(self.scrollable_frame, text='Made by Dammehr Emami from Bahlouli School 2', font=('bold', Heding.p))
+        self.lb13A.pack(padx=12, anchor='w')
+        ## Menu Top Buttons
 
         self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.main_p_btn.pack(side='left', fill='y', expand=False)
 
         self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
@@ -67,17 +134,12 @@ class about_p(ctk.CTkFrame):
         self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
         self.exit_btn.pack(side='right', fill='y', expand=False)
 
+        # about main frame
+
     def exitf(self):
         exit()
 
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
+
 
 ## profile
 class profile_p_friends(ctk.CTkFrame):
@@ -87,12 +149,6 @@ class profile_p_friends(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
 
         # OBJ
 
@@ -116,9 +172,6 @@ class profile_p_friends(ctk.CTkFrame):
 
         self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
@@ -140,19 +193,14 @@ class profile_p_friends(ctk.CTkFrame):
         self.button_setting_firends = ctk.CTkButton(self.menu_left_frame, text='Friends', font=('Times New Roman',20), corner_radius=0, command=lambda: controller.show_frame(profile_p_friends), fg_color=color.red, hover_color=color.dark_red)
         self.button_setting_firends.pack(fill='x')
 
+        self.menu_detials_frame = ctk.CTkScrollableFrame(self, corner_radius=0)
+        self.menu_detials_frame.pack(padx=12, pady=10, side='bottom', fill='both', expand=True)
+
 
 
     def exitf(self):
         exit()
 
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
 
 
 class profile_p(ctk.CTkFrame):
@@ -162,12 +210,6 @@ class profile_p(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
 
         # OBJ
 
@@ -192,8 +234,6 @@ class profile_p(ctk.CTkFrame):
         self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
@@ -295,9 +335,9 @@ class profile_p(ctk.CTkFrame):
 
         if new_username is not None and new_region is not None and new_email is not None:
             # تغییر اطلاعات در label ها
-            self.username_lb_d.config(text=new_username)
-            self.regoin_lb_d.config(text=new_region)
-            self.mail_lb_d.config(text=new_email)
+            self.username_lb_d.configure(text=new_username)
+            self.regoin_lb_d.configure(text=new_region)
+            self.mail_lb_d.configure(text=new_email)
 
             # ذخیره اطلاعات جدید در فایل JSON
             json_file_path = "./data/acc1.json"
@@ -325,14 +365,6 @@ class profile_p(ctk.CTkFrame):
     def exitf(self):
         exit()
 
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
 
 ## library
 class library_p(ctk.CTkFrame):
@@ -342,13 +374,6 @@ class library_p(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
         # OBJ
 
         # Menu Top Frame
@@ -372,9 +397,6 @@ class library_p(ctk.CTkFrame):
         self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
-
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
 
@@ -387,76 +409,6 @@ class library_p(ctk.CTkFrame):
     def exitf(self):
         exit()
 
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
-
-## shop
-class shop_p(ctk.CTkFrame):
-
-    def __init__(self, parent, controller):
-        ctk.CTkFrame.__init__(self, parent)
-        self.controller = controller
-        self.new_frame_status = False
-
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
-        # OBJ
-
-        # Menu Top Frame
-        self.menu_top_frame = ctk.CTkFrame(self, corner_radius=0)
-        self.menu_top_frame.pack(side='top', fill='x', expand=False)
-
-        # Menu Top Frame OBJs
-
-        # APP Logo
-        self.image = Image.open("./assets/logo/favicon/opengmaezone-website-favicon-color.png")
-        self.image = self.image.resize((64, 64))
-        self.photo = ImageTk.PhotoImage(self.image)
-        self.logo = ctk.CTkLabel(self.menu_top_frame, image=self.photo, text='', corner_radius=0)
-        self.logo.pack(side='left', fill='x', expand=False, padx=5)
-
-        # Menu Top Buttons
-
-        self.main_p_btn = ctk.CTkButton(self.menu_top_frame, text='Main', font=('Times New Roman', 35), command=lambda: controller.show_frame(main_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.main_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.library_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.profile_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.about_p_btn = ctk.CTkButton(self.menu_top_frame, text='About', font=('Times New Roman', 35), command=lambda: controller.show_frame(about_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.about_p_btn.pack(side='left', fill='y', expand=False)
-
-        self.exit_btn = ctk.CTkButton(self.menu_top_frame, text='Exit', font=('Times New Roman', 35), command=self.exitf, corner_radius=0, fg_color=color.yellow, hover_color=color.dark_yellow)
-        self.exit_btn.pack(side='right', fill='y', expand=False)
-
-    def exitf(self):
-        exit()
-
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
 
 ## main
 class main_p(ctk.CTkFrame):
@@ -465,13 +417,6 @@ class main_p(ctk.CTkFrame):
         self.controller = controller
         self.new_frame_status = False
 
-        # Full Screen
-        pad=3
-        self._geom='500x600+0+0'
-        controller.geometry("{0}x{1}+0+0".format(
-            controller.winfo_screenwidth()-pad, controller.winfo_screenheight()-pad))
-        controller.bind('<F11>', self.toggle_geom)
-
         # OBJ
 
         # Menu Top Frame
@@ -495,8 +440,6 @@ class main_p(ctk.CTkFrame):
         self.library_p_btn = ctk.CTkButton(self.menu_top_frame, text='Library', font=('Times New Roman', 35), command=lambda: controller.show_frame(library_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.library_p_btn.pack(side='left', fill='y', expand=False)
 
-        self.shop_p_btn = ctk.CTkButton(self.menu_top_frame, text='Shop', font=('Times New Roman', 35), command=lambda: controller.show_frame(shop_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
-        self.shop_p_btn.pack(side='left', fill='y', expand=False)
 
         self.profile_p_btn = ctk.CTkButton(self.menu_top_frame, text='Profile', font=('Times New Roman', 35), command=lambda: controller.show_frame(profile_p), corner_radius=0, fg_color=color.red, hover_color=color.dark_red)
         self.profile_p_btn.pack(side='left', fill='y', expand=False)
@@ -509,15 +452,6 @@ class main_p(ctk.CTkFrame):
 
     def exitf(self):
         exit()
-
-    def toggle_geom(self, event):
-        if self.new_frame_status:
-            self.controller.geometry(self._geom)
-        else:
-            self._geom = self.controller.geometry()
-            self.controller.geometry("{0}x{1}+0+0".format(
-                self.controller.winfo_screenwidth() - 3, self.controller.winfo_screenheight() - 3))
-        self.new_frame_status = not self.new_frame_status
 
 ## WelcomePage
 class WelcomePage(ctk.CTk):
@@ -571,9 +505,8 @@ class Frame_ch(ctk.CTk):
 
         self.frames = {}
 
-        for F in (main_p, shop_p, library_p, profile_p,
-                                             profile_p_friends,
-                                             about_p):
+        for F in (main_p, library_p, profile_p,
+                   profile_p_friends, about_p):
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
@@ -591,6 +524,9 @@ if __name__ == "__main__":
     log_file = open(log_file_path, 'w')
     sys.stdout = log_file
     sys.stderr = log_file
+
+    # thme
+    ctk.set_appearance_mode('dark')
 
     
     welcome_page = WelcomePage()
